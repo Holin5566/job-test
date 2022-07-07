@@ -1,0 +1,46 @@
+$primary:#8FD3F3;
+$primary-dark:#005085;
+$primary-light:#F3FAFD;
+$sub:#22AC38;
+$sub-dark:#007C29;
+$sub-light:#D2E7BF;
+$second:#F7BB1C;
+$second-light:#FDF4CD;
+body{
+    background-color: white;
+}
+.page-title{
+    border-bottom: 3px solid $second;
+    max-width: max-content;
+    padding:.5rem 3rem .5rem 0;
+    font-weight: bold;
+    color: $primary-dark;
+}
+
+.table,.desc{
+    background-color: white;
+}
+.desc{
+    background-color:$primary-light ;
+}
+.table{
+    table{
+        text-align: center;
+        th{
+            background-color: $primary;
+            color: white;
+        }
+        td{
+            border-bottom:2px solid $second-light;
+            svg{
+                cursor: pointer;
+                &:hover{
+                opacity: 0.5;
+                transition: all 0.3s;}
+            }
+        }
+        tr:nth-child(2n){
+            background-color: $primary-light;
+        }
+    }
+}

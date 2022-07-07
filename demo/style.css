@@ -1,0 +1,42 @@
+body {
+  background-color: white;
+}
+
+.page-title {
+  border-bottom: 3px solid #F7BB1C;
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  padding: 0.5rem 3rem 0.5rem 0;
+  font-weight: bold;
+  color: #005085;
+}
+
+.table, .desc {
+  background-color: white;
+}
+
+.desc {
+  background-color: #F3FAFD;
+}
+
+.table table {
+  text-align: center;
+}
+.table table th {
+  background-color: #8FD3F3;
+  color: white;
+}
+.table table td {
+  border-bottom: 2px solid #FDF4CD;
+}
+.table table td svg {
+  cursor: pointer;
+}
+.table table td svg:hover {
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+.table table tr:nth-child(2n) {
+  background-color: #F3FAFD;
+}/*# sourceMappingURL=style.css.map */

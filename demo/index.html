@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Hello World" />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://jqueryui.com/resources/demos/style.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>個人資料表</title>
+  </head>
+
+  <body>
+    <div class="container pt-5">
+      <h1 class="page-title">個人資料表</h1>
+      <br />
+      <div>
+        <button id="addbutton">新增</button>
+        <button id="searchbutton">搜尋</button>
+        <button id="resetbutton">重置</button>
+      </div>
+
+      <br />
+
+      <div class="table shadow-sm table-responsive-md text-nowrap">
+        <table
+          id="cardtable"
+          class="table"
+          cellpadding="0"
+          cellspacing="0"
+          width="100%"
+        >
+          <thead>
+            <tr>
+              <th>姓名(中)</th>
+              <th>姓名(英)</th>
+              <th>性別</th>
+              <th>手機</th>
+              <th>信箱</th>
+              <th>編輯</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!--新增表單-->
+    <div id="dialog-addconfirm" title="新增表單" style="display: none">
+      <form method="post" id="addform">
+        <!-- 中文姓名 -->
+        <div class="formcnname">
+          <div>
+            <label>中文姓名</label>
+            <input
+              name="cnname"
+              style="width: 100px"
+              type="text"
+              id="addcnname"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <!-- 英文姓名 -->
+        <div class="formenname">
+          <div>
+            <label>英文姓名</label>
+            <input
+              name="enname"
+              style="width: 100px"
+              type="text"
+              id="addenname"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <!-- 性別 -->
+        <div class="formsex">
+          <label>性別</label>
+          <div>
+            <label
+              ><input
+                type="radio"
+                name="addsex"
+                value="man"
+                class="radio"
+                checked="checked"
+              />男</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="addsex"
+                value="woman"
+                class="radio"
+              />女</label
+            >
+          </div>
+        </div>
+        <!-- 確認送出 -->
+      </form>
+    </div>
+
+    <!--搜尋表單-->
+    <div id="dialog-searchconfirm" title="搜尋表單" style="display: none">
+      <form method="post" id="searchform">
+        <!-- 中文姓名 -->
+        <div class="formcnname">
+          <div>
+            <label>中文姓名</label>
+            <input
+              name="cnname"
+              style="width: 100px"
+              type="text"
+              id="secnname"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <!-- 英文姓名 -->
+        <div class="formenname">
+          <div>
+            <label>英文姓名</label>
+            <input
+              name="enname"
+              style="width: 100px"
+              type="text"
+              id="seenname"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <!-- 性別 -->
+        <div class="formsex">
+          <label>性別</label>
+          <div>
+            <label
+              ><input
+                type="radio"
+                name="sesex"
+                value="man"
+                class="seradio"
+              />男</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="sesex"
+                value="woman"
+                class="seradio"
+              />女</label
+            >
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!--修改表單-->
+    <div id="dialog-modifyconfirm" title="修改表單" style="display: none">
+      <form method="post" id="modifyform">
+        <!-- 中文姓名 -->
+        <div class="formcnname">
+          <div>
+            <label>中文姓名</label>
+            <input
+              name="cnname"
+              style="width: 100px"
+              type="text"
+              id="mocnname"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <!-- 英文姓名 -->
+        <div class="formenname">
+          <div>
+            <label>英文姓名</label>
+            <input
+              name="enname"
+              style="width: 100px"
+              type="text"
+              id="moenname"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <!-- 性別 -->
+        <div class="formsex">
+          <label>性別</label>
+          <div>
+            <label
+              ><input
+                type="radio"
+                name="mosex"
+                value="man"
+                class="radio"
+                id="modifyman"
+              />男</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="mosex"
+                value="woman"
+                class="radio"
+                id="modifywoman"
+              />女</label
+            >
+          </div>
+        </div>
+
+        <div class="formsid" style="display: none">
+          <input name="sid" id="modifysid" />
+        </div>
+        <!-- 確認送出 -->
+      </form>
+    </div>
+
+    <br />
+    <br />
+    <pre class="container desc p-3">
+    人易科技 前端上機測驗題
+    
+    環境：
+        - 將資料夾放到網頁伺服器中，用瀏覽器執行 http://網址/demo/index.html
+        - 依個人能力完成下列要求
+    要求：
+      1. 美化它，並說明要表達的感覺/主題，訂定的風格、配色
+      2. 將index.html中的js程式碼分離成檔案demo.js，並增加style.css檔案
+      3. 刪除鍵補上確認Dialog，且新增/修改/刪除的dialog使用bootstrap Modal實現 (bootstrap取代jQueryUI)
+      4. 表格(table)奇偶數列而有不同的底色，且滑鼠移到表格資料上時，以滑鼠指到的格子為中心，十字線上的 列/欄 都要變色 (列欄變色各得分50%)
+        |   | 色  |   |    |
+        | 色 | 鼠 | 色 | 色 |
+        |   | 色  |   |    |
+        |   | 色  |   |    |
+      5. 加二個欄位: 手機,電子信箱，並實作 欄位驗証及錯誤訊息顯示
+        - 必填：中文姓名、手機、信箱、性別
+        - 格式：手機、信箱
+        > ※ 註：手機填寫時為10碼數字，格式後面處理
+        > ※ 註：清單及編輯表單都要做
+      6. 特效實作 & 資料處理
+        - bootstrap tooltip：滑鼠「移到」人名上面時，顯示說明文字，內容格式： [性別]中文名子(英文名子)   (字串串接)
+        - bootstrap popover：滑鼠「點擊」手機上面時，顯示手機資訊，內容格式： 聯絡方式：xxxx-xxx-xxx    (字串格式轉換)
+      7. 實作bootstrap RWD效果
+      8. 提高Javascript檔物件化程度
+      9. 實作ajax
+      10. 增加自定特效，並說明其內容 (需4個特效，1個佔25%)
+
+
+      ※ 美化：選擇要表達的感覺/主題，然後訂定風格、確定配色
+      ※ 本範例為前端工程師練習題，只專注版面、美化、頁面行為，不需管後端資料
+      ※ 頁面編碼: UTF-8
+  </pre
+    >
+  </body>
+  <script src="./demo.js"></script>
+</html>
