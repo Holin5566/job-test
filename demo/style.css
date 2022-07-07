@@ -22,7 +22,7 @@ body {
 
 .hover {
   color: rgba(0, 0, 0, 0.3);
-  background-color: rgba(210, 231, 191, 0.1) !important;
+  background-color: rgba(210, 231, 191, 0.3) !important;
 }
 
 .table table {
@@ -34,6 +34,7 @@ body {
 }
 .table table td {
   border: 2px solid rgba(0, 0, 0, 0);
+  transition: all 0.3s;
   border-bottom: 2px solid #FDF4CD;
 }
 .table table td svg {

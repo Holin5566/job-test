@@ -25,7 +25,7 @@ body{
 }
 .hover{
  color: rgba(0, 0, 0, 0.3);
- background-color: rgba($sub-light, 0.1) !important;
+ background-color: rgba($sub-light, 0.3) !important;
 }
 .table{
     table{
@@ -36,6 +36,7 @@ body{
         }
         td{
             border: 2px solid rgba(0, 0, 0, 0);
+            transition: all 0.3s;
             border-bottom:2px solid $second-light;
             svg{
                 cursor: pointer;
