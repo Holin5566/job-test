@@ -203,9 +203,9 @@ AjaxObject.prototype.id = 0;
 AjaxObject.prototype.email = "";
 AjaxObject.prototype.phone = "";
 AjaxObject.prototype.init =
-  '[{"s_sn":"35","cnname":"邱小甘","enname":"Peter","sex":"0","email":"@example.com","phone":"09XXXXXXXX"},{"s_sn":"49","cnname":"蔡凡昕","enname":"Allen","sex":"0","email":"@example.com","phone":"09XXXXXXXX"},{"s_sn":"50","cnname":"趙雪瑜","enname":"Sharon","sex":"0","email":"@example.com","phone":"09XXXXXXXX"},{"s_sn":"51","cnname":"賴佳蓉","enname":"Yoki","sex":"1","email":"@example.com","phone":"09XXXXXXXX"}]';
+  '[{"s_sn":"35","cnname":"邱小甘","enname":"Peter","sex":"0","email":"peter@example.com","phone":"09XXXXXXXX"},{"s_sn":"49","cnname":"蔡凡昕","enname":"Allen","sex":"0","email":"allen@example.com","phone":"09XXXXXXXX"},{"s_sn":"50","cnname":"趙雪瑜","enname":"Sharon","sex":"0","email":"sharon@example.com","phone":"09XXXXXXXX"},{"s_sn":"51","cnname":"賴佳蓉","enname":"Yoki","sex":"1","email":"yoki@example.com","phone":"09XXXXXXXX"}]';
 AjaxObject.prototype.data =
-  '[{"s_sn":"35","cnname":"邱小甘","enname":"Peter","sex":"0","email":"@example.com","phone":"09XXXXXXXX"},{"s_sn":"49","cnname":"蔡凡昕","enname":"Allen","sex":"0","email":"@example.com","phone":"09XXXXXXXX"},{"s_sn":"50","cnname":"趙雪瑜","enname":"Sharon","sex":"0","email":"@example.com","phone":"09XXXXXXXX"},{"s_sn":"51","cnname":"賴佳蓉","enname":"Yoki","sex":"1","email":"@example.com","phone":"09XXXXXXXX"}]';
+  '[{"s_sn":"35","cnname":"邱小甘","enname":"Peter","sex":"0","email":"peter@example.com","phone":"09XXXXXXXX"},{"s_sn":"49","cnname":"蔡凡昕","enname":"Allen","sex":"0","email":"allen@example.com","phone":"09XXXXXXXX"},{"s_sn":"50","cnname":"趙雪瑜","enname":"Sharon","sex":"0","email":"sharon@example.com","phone":"09XXXXXXXX"},{"s_sn":"51","cnname":"賴佳蓉","enname":"Yoki","sex":"1","email":"yoki@example.com","phone":"09XXXXXXXX"}]';
 AjaxObject.prototype.alertt = function () {
   alert("Alert:");
 };
