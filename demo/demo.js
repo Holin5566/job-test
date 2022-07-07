@@ -107,13 +107,13 @@ function refreshTable(data) {
 
   // data = response
   $.each(data, function (key, item) {
-    const strsex = item.sex ? "男" : "女";
+    const strsex = item.sex == 0 ? "男" : "女";
     const row = $("<tr></tr>");
-    row.append($("<td></td>").html(item.cnname));
-    row.append($("<td></td>").html(item.enname));
-    row.append($("<td></td>").html(strsex));
-    row.append($("<td></td>").html(item.phone));
-    row.append($("<td></td>").html(item.email));
+    row.append($(`<td class='cnname'></td>`).html(item.cnname));
+    row.append($(`<td class='enname'></td>`).html(item.enname));
+    row.append($(`<td class='sex'></td>`).html(strsex));
+    row.append($(`<td class='phone'></td>`).html(item.phone));
+    row.append($(`<td class='email'></td>`).html(item.email));
 
     // // 添加編輯鈕
     // row.append(
@@ -126,11 +126,19 @@ function refreshTable(data) {
 
     // 添加編輯、刪除
     row.append(
-      $("<td class='text-center'></td>").html(
+      $("<td class='iconbtn'></td>").html(
         `${icons.penceil(item.s_sn)} ${icons.trash(item.s_sn)}`
       )
     );
     $("#cardtable").append(row);
+
+    const addColHover = (tdClass) =>
+      $("." + tdClass).hover(
+        () => $("." + tdClass).each((i, td) => td.classList.add("hover")),
+        () => $("." + tdClass).each((i, td) => td.classList.remove("hover"))
+      );
+    const classes = ["cnname", "enname", "sex", "phone", "email"];
+    classes.forEach((clas) => addColHover(clas));
   });
 }
 

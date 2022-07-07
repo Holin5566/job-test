@@ -20,6 +20,11 @@ body {
   background-color: #F3FAFD;
 }
 
+.hover {
+  color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(210, 231, 191, 0.1) !important;
+}
+
 .table table {
   text-align: center;
 }
@@ -28,6 +33,7 @@ body {
   color: white;
 }
 .table table td {
+  border: 2px solid rgba(0, 0, 0, 0);
   border-bottom: 2px solid #FDF4CD;
 }
 .table table td svg {
@@ -37,6 +43,17 @@ body {
   opacity: 0.5;
   transition: all 0.3s;
 }
-.table table tr:nth-child(2n) {
+.table table tbody tr:nth-child(2n) {
   background-color: #F3FAFD;
+}
+.table table tbody tr {
+  transition: all 0.3s;
+}
+.table table tbody tr:hover {
+  transform: translate(-2px, -1px);
+  box-shadow: 3px 1px 3px rgba(0, 0, 0, 0.3);
+  background-color: rgba(210, 231, 191, 0.3);
+}
+.table table tbody tr:hover td {
+  color: black !important;
 }/*# sourceMappingURL=style.css.map */

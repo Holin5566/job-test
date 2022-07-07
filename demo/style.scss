@@ -23,6 +23,10 @@ body{
 .desc{
     background-color:$primary-light ;
 }
+.hover{
+ color: rgba(0, 0, 0, 0.3);
+ background-color: rgba($sub-light, 0.1) !important;
+}
 .table{
     table{
         text-align: center;
@@ -31,6 +35,7 @@ body{
             color: white;
         }
         td{
+            border: 2px solid rgba(0, 0, 0, 0);
             border-bottom:2px solid $second-light;
             svg{
                 cursor: pointer;
@@ -39,8 +44,24 @@ body{
                 transition: all 0.3s;}
             }
         }
-        tr:nth-child(2n){
-            background-color: $primary-light;
+        tbody{
+           
+            tr:nth-child(2n){
+                background-color: $primary-light;
+            }
+            tr{
+                transition: all 0.3s;
+                &:hover{
+                    transform: translate(-2px,-1px);
+                    box-shadow: 3px 1px 3px rgba(0, 0, 0, 0.3);
+                    background-color:rgba($sub-light, 0.3);
+                    // font-weight: bold;
+                    td{
+                        color: black !important;
+                    }
+                    // color: white;
+                }
+            }
         }
     }
 }
