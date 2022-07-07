@@ -132,13 +132,14 @@ function refreshTable(data) {
     );
     $("#cardtable").append(row);
 
+    // 列hover
     const addColHover = (tdClass) =>
       $("." + tdClass).hover(
         () => $("." + tdClass).each((i, td) => td.classList.add("hover")),
         () => $("." + tdClass).each((i, td) => td.classList.remove("hover"))
       );
-    const classes = ["cnname", "enname", "sex", "phone", "email"];
-    classes.forEach((clas) => addColHover(clas));
+    const classLi = ["cnname", "enname", "sex", "phone", "email"];
+    classLi.forEach((clas) => addColHover(clas));
   });
 }
 
