@@ -180,7 +180,6 @@ AjaxObject.prototype.sex = "";
 AjaxObject.prototype.id = 0;
 AjaxObject.prototype.email = "";
 AjaxObject.prototype.phone = "";
-AjaxObject.prototype.error = "";
 AjaxObject.prototype.init =
   '[{"s_sn":"35","cnname":"邱小甘","enname":"Peter","sex":"0","email":"peter@example.com","phone":"0925974158"},{"s_sn":"49","cnname":"蔡凡昕","enname":"Allen","sex":"0","email":"allen@example.com","phone":"0989651475"},{"s_sn":"50","cnname":"趙雪瑜","enname":"Sharon","sex":"0","email":"sharon@example.com","phone":"0987451366"},{"s_sn":"51","cnname":"賴佳蓉","enname":"Yoki","sex":"1","email":"yoki@example.com","phone":"0955488745"}]';
 AjaxObject.prototype.data =
@@ -195,7 +194,6 @@ AjaxObject.prototype.getall = function () {
 AjaxObject.prototype.add = function (newPerson) {
   const newData = JSON.parse(this.data);
   newData.push(newPerson);
-  console.log(newData);
   this.data = JSON.stringify(newData);
   refreshTable(newData);
 };
@@ -203,33 +201,29 @@ AjaxObject.prototype.modify = function (target) {
   const newData = JSON.parse(this.data);
   const index = newData.findIndex((person) => person.s_sn == target.s_sn);
   newData[index] = target;
-  console.log(newData);
   this.data = JSON.stringify(newData);
   refreshTable(newData);
-};
-AjaxObject.prototype.modify_get = function () {
-  response =
-    '[{"s_sn":"35","cnname":"邱小甘","enname":"Peter","sex":"0"},{"s_sn":"49","cnname":"蔡凡昕","enname":"Allen","sex":"0"},{"s_sn":"50","cnname":"趙雪瑜","enname":"Sharon","sex":"0"},{"s_sn":"51","cnname":"賴佳蓉","enname":"Yoki","sex":"1"}]';
-  initEdit(JSON.parse(response));
 };
 AjaxObject.prototype.search = function (query) {
   const data = JSON.parse(ajaxobj.data);
   const newData = data.filter((person) => {
     let isMatch = false;
     for (key in person) {
-      if (person[key].includes(query)) {
+      // 跳過性別
+      if (key === "sex") continue;
+
+      if (`${person[key]}`.includes(query)) {
         isMatch = true;
       }
     }
+    // 搜索性別
+    const gender = `${person.sex}` === "0" ? "男" : "女";
+    if (gender.includes(query)) isMatch = true;
+
     return isMatch;
   });
   refreshTable(newData);
 };
-// AjaxObject.prototype.delete = function () {
-//   response =
-//     '[{"s_sn":"35","cnname":"邱小甘","enname":"Peter","sex":"0"},{"s_sn":"49","cnname":"蔡凡昕","enname":"Allen","sex":"0"}]';
-//   refreshTable(JSON.parse(response));
-// };
 AjaxObject.prototype.delete = function (sid) {
   const newData = JSON.parse(this.data).filter((person) => person.s_sn !== sid);
   this.data = JSON.stringify(newData);
@@ -281,11 +275,6 @@ AjaxObject.prototype.isValid = function (form) {
 
 /* ---------------------------------- icons --------------------------------- */
 function Icons() {}
-Icons.prototype.personPlus = (s_sn) => `
-<svg id="modifybutton${s_sn}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
-  <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-  <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
-</svg>`;
 Icons.prototype.penceil = (s_sn) => `
 <svg id="modifybutton${s_sn}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
