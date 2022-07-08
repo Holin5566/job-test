@@ -7,8 +7,10 @@ const icons = new Icons();
 var url = "ajax/ajaxCard";
 var ajaxobj = new AjaxObject(url, "json");
 $(document).ready(function () {
-  // alert('abc');
-
+  // init tooltip
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
   ajaxobj.getall();
   /* ----------------------------------- 新增按鈕 ---------------------------------- */
   $("#plusbutton").click(function () {
@@ -73,8 +75,17 @@ function refreshTable(data) {
   $.each(data, function (key, item) {
     const strsex = item.sex == 0 ? "男" : "女";
     const row = $("<tr></tr>");
-    row.append($(`<td class='cnname'></td>`).html(item.cnname));
-    row.append($(`<td class='enname'></td>`).html(item.enname));
+    const title = `"[${strsex}] ${item.cnname} (${item.enname})"`;
+    row.append(
+      $(`<td class='cnname' title=${title} data-toggle="tooltip"></td>`).html(
+        item.cnname
+      )
+    );
+    row.append(
+      $(`<td class='enname' title=${title} data-toggle="tooltip"></td>`).html(
+        item.enname
+      )
+    );
     row.append($(`<td class='sex'></td>`).html(strsex));
     row.append($(`<td class='phone'></td>`).html(item.phone));
     row.append($(`<td class='email'></td>`).html(item.email));
@@ -95,7 +106,10 @@ function refreshTable(data) {
     const classLi = ["cnname", "enname", "sex", "phone", "email"];
     classLi.forEach((clas) => addColHover(clas));
   });
-
+  // // 添加 tooltips
+  // $(".cnname").each((i, cn) => {
+  //   const tartget = cn.parentNode.lastChild.children[0].id.slice(12);
+  // });
   /* --------------------------------- delete --------------------------------- */
   // 新增 dialog 功能
   $(".bi-trash").each((i, svg) => svg.setAttribute("data-bs-toggle", "modal"));
