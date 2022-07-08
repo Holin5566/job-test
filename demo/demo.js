@@ -262,29 +262,35 @@ AjaxObject.prototype.isValid = function (form) {
   for (let key in form) {
     if (form[key] === "") {
       $(".alert").remove();
-      $("#addBody").prepend(`
+      $(".modal-body").each((i, modal) => {
+        $(modal).prepend(`
       <div class="alert alert-danger" role="alert">
       請填入:${en_to_cn[key]}
       </div>`);
+      });
       return false;
     }
   }
   // 信箱格式
   if (!form?.email.includes("@") || !form?.email.includes(".com")) {
     $(".alert").remove();
-    $(".modal-body").prepend(`
+    $(".modal-body").each((i, modal) => {
+      $(modal).prepend(`
     <div class="alert alert-danger" role="alert">
     信箱格式錯誤
     </div>`);
+    });
     return false;
   }
   // 電話格式
   if (form?.phone.length !== 10 || isNaN(form?.phone * 1)) {
     $(".alert").remove();
-    $(".modal-body").prepend(`
+    $(".modal-body").each((i, modal) => {
+      $(modal).prepend(`
     <div class="alert alert-danger" role="alert">
     電話格式錯誤
     </div>`);
+    });
     return false;
   }
 
