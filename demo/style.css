@@ -1,31 +1,80 @@
 body {
   background-color: white;
-}
-
-.page-title {
-  border-bottom: 3px solid #F7BB1C;
-  max-width: -webkit-max-content;
-  max-width: -moz-max-content;
-  max-width: max-content;
-  padding: 0.5rem 3rem 0.5rem 0;
-  font-weight: bold;
-  color: #005085;
-}
-
-.table, .desc {
-  background-color: white;
+  min-width: 370px;
 }
 
 .desc {
   background-color: #F3FAFD;
 }
 
+@-webkit-keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes slide {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 120%;
+  }
+}
+@keyframes slide {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 120%;
+  }
+}
 .hover {
   color: rgba(0, 0, 0, 0.3);
   background-color: rgba(210, 231, 191, 0.3) !important;
 }
 
+#plusbutton {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#plusbutton:hover {
+  transform: scale(1.05);
+}
+
+.underline {
+  width: 120%;
+  height: 3px;
+  background-color: #F7BB1C;
+  -webkit-animation: slide 1s ease-in-out;
+          animation: slide 1s ease-in-out;
+}
+
+.main {
+  min-height: 70vh;
+}
+
+.page-title {
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  font-weight: bold;
+  color: #005085;
+}
+
 .table table {
+  background-color: white;
   text-align: center;
 }
 .table table th {
@@ -57,4 +106,27 @@ body {
 }
 .table table tbody tr:hover td {
   color: black !important;
+}
+
+.modal-header {
+  background-color: #8FD3F3;
+  color: white;
+}
+
+.modal label {
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+.modal .form-control {
+  border-radius: 0;
+  border: none;
+  -webkit-animation: show 2s ease-out;
+          animation: show 2s ease-out;
+  border-bottom: 1px solid #005085;
+}
+.modal .form-control:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: #F3FAFD;
+  border-bottom: 2px solid #8FD3F3;
 }/*# sourceMappingURL=style.css.map */

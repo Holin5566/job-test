@@ -8,61 +8,11 @@ $second:#F7BB1C;
 $second-light:#FDF4CD;
 body{
     background-color: white;
-}
-.page-title{
-    border-bottom: 3px solid $second;
-    max-width: max-content;
-    padding:.5rem 3rem .5rem 0;
-    font-weight: bold;
-    color: $primary-dark;
-}
-
-.table,.desc{
-    background-color: white;
+    min-width: 370px;
 }
 .desc{
     background-color:$primary-light ;
 }
-.hover{
- color: rgba(0, 0, 0, 0.3);
- background-color: rgba($sub-light, 0.3) !important;
-}
-.table{
-    table{
-        text-align: center;
-        th{
-            background-color: $primary;
-            color: white;
-        }
-        td{
-            border: 2px solid rgba(0, 0, 0, 0);
-            transition: all 0.3s;
-            border-bottom:2px solid $second-light;
-            svg{
-                cursor: pointer;
-                &:hover{
-                opacity: 0.5;
-                transition: all 0.3s;}
-            }
-        }
-        tbody{
-           
-            tr:nth-child(2n){
-                background-color: $primary-light;
-            }
-            tr{
-                transition: all 0.3s;
-                &:hover{
-                    transform: translate(-2px,-1px);
-                    box-shadow: 3px 1px 3px rgba(0, 0, 0, 0.3);
-                    background-color:rgba($sub-light, 0.3);
-                    // font-weight: bold;
-                    td{
-                        color: black !important;
-                    }
-                    // color: white;
-                }
-            }
-        }
-    }
-}
+@import "./styles/animate";
+@import "./styles/table";
+@import "./styles/modal";

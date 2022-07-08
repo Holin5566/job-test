@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="description" content="Hello World" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
       href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
@@ -29,6 +30,7 @@
   </head>
 
   <body>
+<<<<<<< HEAD
     <div class="container pt-5">
       <h1 class="page-title">個料表</h1>
       <br />
@@ -36,8 +38,57 @@
         <button id="addbutton">新增</button>
         <button id="searchbutton">搜尋</button>
         <button id="resetbutton">重置</button>
+=======
+    <div class="container main pt-5">
+      <div class="page-title">
+        <h1>個人資料表</h1>
+        <div class="underline"></div>
+>>>>>>> abdb95800f402245d7fb76b7bc803f95a6f74756
       </div>
+      <br />
+      <div class="row justify-content-between">
+        <div class="col-md-4 col-8 d-flex align-items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            class="bi bi-search"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+            />
+          </svg>
+          <input
+            id="searchbar"
+            class="p-0 mx-3 form-control"
+            type="text"
+            placeholder="搜索"
+          />
+        </div>
 
+        <div class="col-4 text-end">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            id="plusbutton"
+            width="32"
+            height="32"
+            fill="currentColor"
+            class="bi bi-plus-circle"
+            viewBox="0 0 16 16"
+            data-bs-toggle="modal"
+            data-bs-target="#dialog-add"
+          >
+            <path
+              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+            />
+            <path
+              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+            />
+          </svg>
+        </div>
+      </div>
       <br />
 
       <div class="table shadow-sm table-responsive-md text-nowrap">
@@ -64,33 +115,100 @@
     </div>
 
     <!--新增表單-->
-    <div id="dialog-addconfirm" title="新增表單" style="display: none">
-      <form method="post" id="addform">
-        <!-- 中文姓名 -->
-        <div class="formcnname">
-          <div>
-            <label>中文姓名</label>
-            <input
-              name="cnname"
-              style="width: 100px"
-              type="text"
-              id="addcnname"
-              class="form-control"
-            />
+    <div
+      class="modal fade"
+      id="dialog-add"
+      data-bs-backdrop="static"
+      tabindex="-1"
+      aria-labelledby="add-title"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="add-title">新增</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
-        </div>
-        <!-- 英文姓名 -->
-        <div class="formenname">
-          <div>
-            <label>英文姓名</label>
-            <input
-              name="enname"
-              style="width: 100px"
-              type="text"
-              id="addenname"
-              class="form-control"
-            />
+          <div id="addBody" class="modal-body">
+            <div class="row align-items-center">
+              <div class="col-12 col-md-6">
+                <!-- 中文姓名 -->
+                <label>姓名(中)</label>
+                <input
+                  name="cnname"
+                  style="width: 100px"
+                  type="text"
+                  id="addcnname"
+                  class="form-control mx-1"
+                />
+              </div>
+              <div class="col-12 col-md-6">
+                <!-- 英文姓名 -->
+                <label>姓名(英)</label>
+                <input
+                  name="enname"
+                  style="width: 100px"
+                  type="text"
+                  id="addenname"
+                  class="form-control mx-1"
+                />
+              </div>
+            </div>
+
+            <!-- 性別 -->
+            <div class="formsex my-2 flex">
+              <label>性別</label>
+              <label
+                ><input
+                  type="radio"
+                  name="addsex"
+                  value="man"
+                  class="radio ms-2"
+                  id="addman"
+                />男</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="addssex"
+                  value="woman"
+                  class="radio ms-2"
+                  id="addwoman"
+                />女</label
+              >
+            </div>
+            <div class="formemail">
+              <div>
+                <label>信箱</label>
+                <input
+                  name="email"
+                  type="email"
+                  id="addemail"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="formphone">
+              <div>
+                <label>電話</label>
+                <input
+                  name="phone"
+                  type="text"
+                  id="addphone"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="formsid" style="display: none">
+              <input type="text" id="add-sid" class="d-none" />
+            </div>
           </div>
+<<<<<<< HEAD
         </div>
         <!-- 性別 -->
         <div class="formsex">
@@ -103,139 +221,194 @@
                 value="man"
                 class="radio"
               />男</label
+=======
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary mx-1"
+              data-bs-dismiss="modal"
+>>>>>>> abdb95800f402245d7fb76b7bc803f95a6f74756
             >
-            <label
-              ><input
-                type="radio"
-                name="addsex"
-                value="woman"
-                class="radio"
-              />女</label
+              返回
+            </button>
+            <button
+              id="addbutton"
+              type="button"
+              class="btn addbutton btn-primary"
             >
+              確認新增
+            </button>
           </div>
         </div>
-        <!-- 確認送出 -->
-      </form>
+      </div>
+    </div>
+    <!--編輯表單-->
+    <div
+      class="modal fade"
+      id="dialog-modify"
+      data-bs-backdrop="static"
+      tabindex="-1"
+      aria-labelledby="modify-title"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modify-title">編輯資料</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row align-items-center">
+              <div class="col-12 col-md-6">
+                <!-- 中文姓名 -->
+                <label>姓名(中)</label>
+                <input
+                  name="cnname"
+                  style="width: 100px"
+                  type="text"
+                  id="mocnname"
+                  class="form-control mx-1"
+                />
+              </div>
+              <div class="col-12 col-md-6">
+                <!-- 英文姓名 -->
+                <label>姓名(英)</label>
+                <input
+                  name="enname"
+                  style="width: 100px"
+                  type="text"
+                  id="moenname"
+                  class="form-control mx-1"
+                />
+              </div>
+            </div>
+
+            <!-- 性別 -->
+            <div class="formsex my-2 flex">
+              <label>性別</label>
+              <div>
+                <label
+                  ><input
+                    type="radio"
+                    name="mosex"
+                    value="man"
+                    class="radio ms-2"
+                    id="modifyman"
+                  />男</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="mosex"
+                    value="woman"
+                    class="radio ms-2"
+                    id="modifywoman"
+                  />女</label
+                >
+              </div>
+            </div>
+            <div class="formemail">
+              <div>
+                <label>信箱</label>
+                <input
+                  name="email"
+                  type="email"
+                  id="moemail"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="formphone">
+              <div>
+                <label>電話</label>
+                <input
+                  name="phone"
+                  type="text"
+                  id="mophone"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="formsid" style="display: none">
+              <input type="text" id="modify-sid" class="d-none" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary mx-1"
+              data-bs-dismiss="modal"
+            >
+              取消
+            </button>
+            <button type="button" class="btn modifybutton btn-primary">
+              儲存變更
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!--搜尋表單-->
-    <div id="dialog-searchconfirm" title="搜尋表單" style="display: none">
-      <form method="post" id="searchform">
-        <!-- 中文姓名 -->
-        <div class="formcnname">
-          <div>
-            <label>中文姓名</label>
-            <input
-              name="cnname"
-              style="width: 100px"
-              type="text"
-              id="secnname"
-              class="form-control"
-            />
+    <!-- 刪除提示 -->
+    <div
+      class="modal fade"
+      id="dialog-delete"
+      data-bs-backdrop="static"
+      tabindex="-1"
+      aria-labelledby="delete-title"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="delete-title">刪除用戶</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
-        </div>
-        <!-- 英文姓名 -->
-        <div class="formenname">
-          <div>
-            <label>英文姓名</label>
-            <input
-              name="enname"
-              style="width: 100px"
-              type="text"
-              id="seenname"
-              class="form-control"
-            />
+          <div class="modal-body">
+            <div id="delete-detail"></div>
+            <input type="text" id="delete-sid" class="d-none" />
           </div>
-        </div>
-        <!-- 性別 -->
-        <div class="formsex">
-          <label>性別</label>
-          <div>
-            <label
-              ><input
-                type="radio"
-                name="sesex"
-                value="man"
-                class="seradio"
-              />男</label
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary mx-1"
+              data-bs-dismiss="modal"
             >
-            <label
-              ><input
-                type="radio"
-                name="sesex"
-                value="woman"
-                class="seradio"
-              />女</label
+              取消
+            </button>
+            <button
+              type="button"
+              data-bs-dismiss="modal"
+              class="btn deletebutton btn-primary"
             >
+              確認刪除
+            </button>
           </div>
         </div>
-      </form>
-    </div>
-
-    <!--修改表單-->
-    <div id="dialog-modifyconfirm" title="修改表單" style="display: none">
-      <form method="post" id="modifyform">
-        <!-- 中文姓名 -->
-        <div class="formcnname">
-          <div>
-            <label>中文姓名</label>
-            <input
-              name="cnname"
-              style="width: 100px"
-              type="text"
-              id="mocnname"
-              class="form-control"
-            />
-          </div>
-        </div>
-        <!-- 英文姓名 -->
-        <div class="formenname">
-          <div>
-            <label>英文姓名</label>
-            <input
-              name="enname"
-              style="width: 100px"
-              type="text"
-              id="moenname"
-              class="form-control"
-            />
-          </div>
-        </div>
-        <!-- 性別 -->
-        <div class="formsex">
-          <label>性別</label>
-          <div>
-            <label
-              ><input
-                type="radio"
-                name="mosex"
-                value="man"
-                class="radio"
-                id="modifyman"
-              />男</label
-            >
-            <label
-              ><input
-                type="radio"
-                name="mosex"
-                value="woman"
-                class="radio"
-                id="modifywoman"
-              />女</label
-            >
-          </div>
-        </div>
-
-        <div class="formsid" style="display: none">
-          <input name="sid" id="modifysid" />
-        </div>
-        <!-- 確認送出 -->
-      </form>
+      </div>
     </div>
 
     <br />
     <br />
     <pre class="container desc p-3">
+    主題:
+         因為網頁的主體是表格，比較側重功能性，所以主要以簡單的配色輔助閱讀。
+         配色是參考貴公司的風格，以融入貴公司網站為目的設計的。
+         為了使用體驗，翻新了 dialog ，也做了簡單的 rwd 功能。
+         另外也把搜索欄位變更成開放式，能更方便快速地使用。
+         信箱、電話欄位也有加入簡單的格式驗證，能提示錯誤。
+
+
     人易科技 前端上機測驗題
     
     環境：
