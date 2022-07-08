@@ -8,20 +8,67 @@ $second:#F7BB1C;
 $second-light:#FDF4CD;
 body{
     background-color: white;
+    min-width: 370px;
+}
+@keyframes slide {
+    0%{width: 0;}
+    100%{width: 120%;}
+}
+.underline{
+    width: 120%;
+    height: 3px;
+    background-color: $second;
+    animation: slide 1s ease-in-out;
+}
+@keyframes show {
+    0%{opacity: 0}
+    100%{opacity: 1}
+}
+.modal{
+    label{
+        margin-top: .5rem;
+        margin-bottom: .2rem;
+    }
+    .form-control{
+        border-radius: 0;
+        border:none;
+        animation: show 2s ease-out;
+        border-bottom:1px solid $primary-dark;
+        &:focus{
+            outline: none !important;
+            box-shadow: none !important;
+            background-color: $primary-light;
+            border-bottom:2px solid $primary;
+        }
+    }
 }
 .page-title{
-    border-bottom: 3px solid $second;
     max-width: max-content;
-    padding:.5rem 3rem .5rem 0;
     font-weight: bold;
     color: $primary-dark;
 }
-
 .table,.desc{
     background-color: white;
 }
+.main{
+    min-height: 70vh;
+}
+.modal-header{
+    background-color: $primary;
+    color:white
+}
 .desc{
     background-color:$primary-light ;
+}
+.error{
+    border-color: red;
+}
+#plusbutton{
+    cursor: pointer;
+    transition: all .3s;
+    &:hover{
+        transform: scale(1.05);
+    }
 }
 .hover{
  color: rgba(0, 0, 0, 0.3);
