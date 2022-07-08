@@ -159,7 +159,6 @@ function refreshTable(data) {
     };
   });
 }
-
 function initEdit(response) {
   $("#mocnname").val(response.cnname);
   $("#moenname").val(response.enname);
@@ -183,6 +182,18 @@ function initDelete(person) {
   );
   contain.append(`<p><span>信箱</span>: ${person.email}</p>`);
   contain.append(`<p><span>電話</span>: ${person.phone}</p>`);
+}
+function isMatch(query) {
+  return (person) => {
+    for (key in person) {
+      // 跳過性別
+      if (key === "sex") continue;
+      if (`${person[key]}`.includes(query)) return true;
+    }
+    // 搜索性別
+    const gender = `${person.sex}` === "0" ? "男" : "女";
+    if (gender.includes(query)) return true;
+  };
 }
 
 /**
@@ -229,22 +240,7 @@ AjaxObject.prototype.modify = function (target) {
 };
 AjaxObject.prototype.search = function (query) {
   const data = JSON.parse(ajaxobj.data);
-  const newData = data.filter((person) => {
-    let isMatch = false;
-    for (key in person) {
-      // 跳過性別
-      if (key === "sex") continue;
-
-      if (`${person[key]}`.includes(query)) {
-        isMatch = true;
-      }
-    }
-    // 搜索性別
-    const gender = `${person.sex}` === "0" ? "男" : "女";
-    if (gender.includes(query)) isMatch = true;
-
-    return isMatch;
-  });
+  const newData = data.filter(isMatch(query));
   refreshTable(newData);
 };
 AjaxObject.prototype.delete = function (sid) {
