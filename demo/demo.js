@@ -11,6 +11,7 @@ $(document).ready(function () {
   $(function () {
     $('[data-toggle="tooltip"]').tooltip();
   });
+
   ajaxobj.getall();
   /* ----------------------------------- 新增按鈕 ---------------------------------- */
   $("#plusbutton").click(function () {
@@ -75,6 +76,12 @@ function refreshTable(data) {
   $.each(data, function (key, item) {
     const strsex = item.sex == 0 ? "男" : "女";
     const row = $("<tr></tr>");
+    const phone = item.phone;
+    const popover = `
+    data-bs-toggle="popover" 
+    data-bs-content="聯絡方式 : 
+    ${phone.slice(0, 4)}-${phone.slice(4, 7)}-${phone.slice(7, 10)}"`;
+
     const title = `"[${strsex}] ${item.cnname} (${item.enname})"`;
     row.append(
       $(`<td class='cnname' title=${title} data-toggle="tooltip"></td>`).html(
@@ -87,7 +94,7 @@ function refreshTable(data) {
       )
     );
     row.append($(`<td class='sex'></td>`).html(strsex));
-    row.append($(`<td class='phone'></td>`).html(item.phone));
+    row.append($(`<td class='phone' ${popover}></td>`).html(item.phone));
     row.append($(`<td class='email'></td>`).html(item.email));
     // 添加編輯、刪除
     row.append(
@@ -96,7 +103,6 @@ function refreshTable(data) {
       )
     );
     $("#cardtable").append(row);
-
     // 新增列 hover 效果
     const addColHover = (tdClass) =>
       $("." + tdClass).hover(
@@ -106,10 +112,13 @@ function refreshTable(data) {
     const classLi = ["cnname", "enname", "sex", "phone", "email"];
     classLi.forEach((clas) => addColHover(clas));
   });
-  // // 添加 tooltips
-  // $(".cnname").each((i, cn) => {
-  //   const tartget = cn.parentNode.lastChild.children[0].id.slice(12);
-  // });
+  // create popover
+  const popoverTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="popover"]')
+  );
+  const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl);
+  });
   /* --------------------------------- delete --------------------------------- */
   // 新增 dialog 功能
   $(".bi-trash").each((i, svg) => svg.setAttribute("data-bs-toggle", "modal"));
